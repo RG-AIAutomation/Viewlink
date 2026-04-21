@@ -319,14 +319,14 @@
       background:linear-gradient(180deg,#3b86ff,#145fef);
     }
 
-    .hero-visual{
-      position:relative;
-      height:720px;
-      display:flex;
-      align-items:center;
-      justify-content:flex-end;
-      overflow:hidden;
-    }
+.hero-visual{
+  position:relative;
+  height:720px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:visible;
+}
 
     .hero-visual::before{
       content:"";
@@ -342,17 +342,17 @@
 .hero-globe{
   position:relative;
   z-index:1;
-  width:1060px;
+  width:940px;
   max-width:none;
   height:auto;
-  transform:translateX(40px);
+  transform:translateX(0);
   filter:brightness(1.02) contrast(1.03);
   animation:floatGlobe 8s ease-in-out infinite;
 }
 
 @keyframes floatGlobe{
-  0%,100%{ transform:translateX(40px) translateY(0); }
-  50%{ transform:translateX(40px) translateY(-6px); }
+  0%,100%{ transform:translateX(0) translateY(0); }
+  50%{ transform:translateX(0) translateY(-6px); }
 }
 
     /* SERVICES */
