@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Viewlink | Internet. CCTV. Solar. Network.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #1e66ff;
+      --primary-dark: #0f4fd6;
+      --text: #0e1b3d;
+      --muted: #6a7691;
+      --border: #e8edf7;
+      --bg-soft: #f5f8ff;
+      --white: #ffffff;
+      --dark: #06101f;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      color: var(--text);
+      background: #ffffff;
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background: #fff;
+      border-bottom: 1px solid #f0f3fa;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-wrap {
+      height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 20px;
+      font-weight: 800;
+      color: #10245c;
+    }
+
+    .logo-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      position: relative;
+      background: linear-gradient(145deg, #12358f, #0b1e55);
+      box-shadow: 0 10px 25px rgba(30,102,255,0.2);
+    }
+
+    .logo-icon::before {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border: 3px solid #fff;
+      border-top-color: transparent;
+      border-left-color: transparent;
+      border-radius: 50%;
+      top: 5px;
+      left: 6px;
+      transform: rotate(20deg);
+    }
+
+    .logo-icon::after {
+      content: "";
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: #fff;
+      border-radius: 50%;
+      right: 4px;
+      top: 7px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      font-weight: 600;
+      color: #22315f;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 6px 0;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary);
+    }
+
+    .nav-links a.active::after,
+    .nav-links a:hover::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 100%;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 99px;
+    }
+
+    .support-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border: 2px solid rgba(30,102,255,0.35);
+      color: #204db8;
+      font-weight: 700;
+      border-radius: 999px;
+      transition: 0.25s ease;
+      background: #fff;
+    }
+
+    .support-btn:hover {
+      background: #f5f8ff;
+      transform: translateY(-1px);
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 78% 30%, rgba(255,255,255,0.18), transparent 18%),
+        radial-gradient(circle at 80% 42%, rgba(30,102,255,0.28), transparent 20%),
+        radial-gradient(circle at 25% 30%, rgba(24,95,255,0.12), transparent 22%),
+        linear-gradient(180deg, #020610 0%, #030916 100%);
+      min-height: 650px;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(2px 2px at 10% 20%, rgba(255,255,255,.85), transparent),
+        radial-gradient(1px 1px at 30% 40%, rgba(255,255,255,.65), transparent),
+        radial-gradient(2px 2px at 60% 15%, rgba(255,255,255,.7), transparent),
+        radial-gradient(1px 1px at 85% 18%, rgba(255,255,255,.75), transparent),
+        radial-gradient(2px 2px at 75% 60%, rgba(255,255,255,.8), transparent),
+        radial-gradient(1px 1px at 18% 70%, rgba(255,255,255,.7), transparent),
+        radial-gradient(1px 1px at 50% 80%, rgba(255,255,255,.7), transparent),
+        radial-gradient(2px 2px at 92% 48%, rgba(255,255,255,.8), transparent),
+        radial-gradient(1px 1px at 40% 10%, rgba(255,255,255,.8), transparent),
+        radial-gradient(1px 1px at 5% 90%, rgba(255,255,255,.6), transparent);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .hero-wrap {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      align-items: center;
+      min-height: 650px;
+      gap: 10px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-text {
+      color: #fff;
+      padding: 50px 0 40px;
+      max-width: 560px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: #1881ff;
+      font-size: 15px;
+      font-weight: 800;
+      margin-bottom: 18px;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: clamp(44px, 5vw, 72px);
+      line-height: 0.98;
+      letter-spacing: -2px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 .accent {
+      color: #1d7cff;
+      display: inline-block;
+    }
+
+    .hero p {
+      font-size: 22px;
+      color: rgba(255,255,255,0.86);
+      max-width: 540px;
+      margin-bottom: 34px;
+    }
+
+    .stats {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-bottom: 30px;
+    }
+
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 145px;
+    }
+
+    .stat + .stat {
+      padding-left: 18px;
+      border-left: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .stat-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(30,102,255,0.14);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .stat span {
+      display: block;
+      font-size: 13px;
+      color: rgba(255,255,255,0.72);
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 24px;
+      border-radius: 12px;
+      background: linear-gradient(180deg, #2e7cff, #145fef);
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 20px 45px rgba(30,102,255,0.28);
+      transition: 0.25s ease;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(180deg, #3b86ff, #145fef);
+    }
+
+    /* GLOBE VISUAL */
+    .hero-visual {
+      position: relative;
+      height: 650px;
+      overflow: hidden;
+    }
+
+    .earth {
+      position: absolute;
+      width: 760px;
+      height: 760px;
+      right: -120px;
+      top: 10px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 68% 22%, rgba(255,255,255,.9), rgba(255,255,255,0.08) 14%, transparent 26%),
+        radial-gradient(circle at 28% 42%, rgba(255,191,80,0.95) 0.5%, rgba(255,191,80,0.72) 1.2%, transparent 1.8%),
+        radial-gradient(circle at 34% 52%, rgba(255,191,80,0.9) 0.4%, rgba(255,191,80,0.65) 1%, transparent 1.6%),
+        radial-gradient(circle at 41% 34%, rgba(255,191,80,0.9) 0.35%, rgba(255,191,80,0.65) 1%, transparent 1.6%),
+        radial-gradient(circle at 46% 48%, rgba(255,191,80,0.85) 0.5%, rgba(255,191,80,0.6) 1.1%, transparent 1.8%),
+        radial-gradient(circle at 52% 40%, rgba(255,191,80,0.9) 0.45%, rgba(255,191,80,0.62) 1.05%, transparent 1.7%),
+        radial-gradient(circle at 57% 54%, rgba(255,191,80,0.92) 0.35%, rgba(255,191,80,0.62) 1.05%, transparent 1.7%),
+        radial-gradient(circle at 60% 34%, rgba(255,191,80,0.9) 0.4%, rgba(255,191,80,0.65) 1.05%, transparent 1.7%),
+        radial-gradient(circle at 67% 46%, rgba(255,191,80,0.85) 0.35%, rgba(255,191,80,0.62) 1.05%, transparent 1.7%),
+        radial-gradient(circle at 73% 56%, rgba(255,191,80,0.9) 0.45%, rgba(255,191,80,0.65) 1.1%, transparent 1.8%),
+        radial-gradient(circle at 45% 50%, rgba(15,29,62,0.9), rgba(3,8,18,1) 55%, rgba(0,0,0,1) 76%),
+        radial-gradient(circle at 72% 20%, rgba(255,255,255,.85), rgba(255,255,255,.12) 12%, transparent 22%),
+        radial-gradient(circle at 72% 22%, rgba(68,129,255,.2), transparent 34%);
+      box-shadow:
+        inset -80px -80px 120px rgba(0,0,0,0.82),
+        inset 60px 10px 90px rgba(255,255,255,0.12),
+        0 0 120px rgba(53,120,255,0.15);
+      animation: rotateEarth 26s linear infinite;
+    }
+
+    .earth::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 69% 19%, rgba(255,255,255,0.95), transparent 8%),
+        radial-gradient(circle at 74% 24%, rgba(255,255,255,0.22), transparent 16%),
+        linear-gradient(130deg, transparent 42%, rgba(255,255,255,0.08) 53%, transparent 64%);
+      mix-blend-mode: screen;
+    }
+
+    .earth::after {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 1px solid rgba(115,170,255,0.15);
+    }
+
+    @keyframes rotateEarth {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .orbit {
+      position: absolute;
+      width: 530px;
+      height: 320px;
+      border: 2px solid rgba(112,166,255,0.85);
+      border-left-color: transparent;
+      border-bottom-color: transparent;
+      border-radius: 50%;
+      right: -10px;
+      top: 115px;
+      transform: rotate(16deg);
+      box-shadow: 0 0 18px rgba(91,154,255,0.16);
+    }
+
+    .orbit::after {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #79b0ff;
+      bottom: 44px;
+      left: 172px;
+      box-shadow: 0 0 24px #79b0ff, 0 0 60px rgba(121,176,255,0.7);
+    }
+
+    .satellite {
+      position: absolute;
+      top: 102px;
+      right: 98px;
+      width: 98px;
+      height: 34px;
+      transform: rotate(21deg);
+      animation: floatSat 4s ease-in-out infinite;
+    }
+
+    .satellite .body {
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      left: 35px;
+      top: 3px;
+      border-radius: 6px;
+      background: linear-gradient(145deg, #b58d55, #76511c);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.28);
+    }
+
+    .satellite .body::before {
+      content: "";
+      position: absolute;
+      width: 22px;
+      height: 4px;
+      background: #d8b16d;
+      left: 4px;
+      top: 12px;
+      border-radius: 4px;
+    }
+
+    .satellite .panel-left,
+    .satellite .panel-right {
+      position: absolute;
+      width: 34px;
+      height: 22px;
+      top: 6px;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.10) 2px, transparent 2px),
+        linear-gradient(rgba(255,255,255,0.10) 2px, transparent 2px),
+        linear-gradient(180deg, #14305c, #081b3f);
+      background-size: 8px 100%, 100% 8px, 100% 100%;
+      border: 2px solid #234d91;
+      border-radius: 2px;
+    }
+
+    .satellite .panel-left { left: 0; }
+    .satellite .panel-right { right: 0; }
+
+    .satellite .arm-left,
+    .satellite .arm-right {
+      position: absolute;
+      width: 10px;
+      height: 2px;
+      top: 16px;
+      background: #c5a365;
+    }
+
+    .satellite .arm-left { left: 28px; }
+    .satellite .arm-right { right: 28px; }
+
+    @keyframes floatSat {
+      0%, 100% { transform: rotate(21deg) translateY(0); }
+      50% { transform: rotate(21deg) translateY(-7px); }
+    }
+
+    /* SERVICES */
+    .services {
+      padding: 26px 0 18px;
+      background: #fff;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(28px, 3vw, 42px);
+      font-weight: 800;
+      color: #10245c;
+      margin-bottom: 10px;
+      letter-spacing: -1px;
+    }
+
+    .line {
+      width: 72px;
+      height: 4px;
+      border-radius: 99px;
+      background: linear-gradient(90deg, #1e66ff, #68a2ff);
+      margin: 0 auto;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px 18px 20px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(17, 40, 102, 0.05);
+      transition: 0.25s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 35px rgba(17, 40, 102, 0.10);
+    }
+
+    .service-icon {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 28px;
+      background: linear-gradient(180deg, #eff5ff, #f8fbff);
+      color: #256dff;
+      border: 1px solid #e5edf9;
+    }
+
+    .service-card h3 {
+      font-size: 18px;
+      line-height: 1.2;
+      min-height: 44px;
+      margin-bottom: 10px;
+      color: #13285f;
+      font-weight: 800;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 16px;
+      min-height: 82px;
+    }
+
+    .outline-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 135px;
+      padding: 10px 14px;
+      border: 1.5px solid #b9cffd;
+      border-radius: 12px;
+      color: #256dff;
+      font-weight: 700;
+      font-size: 14px;
+      background: #fff;
+      transition: 0.25s ease;
+    }
+
+    .outline-btn:hover {
+      background: #f4f8ff;
+      border-color: #8fb3ff;
+    }
+
+    /* CONTACT */
+    .contact-section {
+      padding: 18px 0 36px;
+    }
+
+    .contact-box {
+      background: linear-gradient(180deg, #f7faff, #f3f7ff);
+      border: 1px solid #e7eefb;
+      border-radius: 22px;
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 0.9fr 1.3fr;
+      gap: 26px;
+    }
+
+    .contact-info h3 {
+      font-size: clamp(28px, 3vw, 38px);
+      line-height: 1.05;
+      color: #0f2356;
+      margin-bottom: 12px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .contact-info p {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 430px;
+      margin-bottom: 24px;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      color: #11275a;
+      font-weight: 600;
+    }
+
+    .info-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #ffffff;
+      border: 1px solid #e4ebfb;
+      color: #1e66ff;
+      flex-shrink: 0;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 14px;
+      align-content: start;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      width: 100%;
+      background: #fff;
+      border: 1px solid #dfe8f7;
+      border-radius: 12px;
+      padding: 14px 16px;
+      outline: none;
+      transition: 0.2s ease;
+      color: #122960;
+    }
+
+    .contact-form input:focus,
+    .contact-form select:focus,
+    .contact-form textarea:focus {
+      border-color: #79a9ff;
+      box-shadow: 0 0 0 4px rgba(30,102,255,0.08);
+    }
+
+    .contact-form textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      padding: 15px 20px;
+      background: linear-gradient(180deg, #2d7cff, #145fef);
+      color: #fff;
+      border: 0;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.25s ease;
+      box-shadow: 0 16px 30px rgba(30,102,255,0.22);
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    /* FOOTER */
+    .footer {
+      background: #06163c;
+      color: rgba(255,255,255,0.86);
+      padding: 22px 0;
+      margin-top: 10px;
+    }
+
+    .footer-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .footer-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      font-weight: 500;
+    }
+
+    .footer-nav a:hover {
+      color: #90b5ff;
+    }
+
+    .copyright {
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* MOBILE */
+    .menu-toggle {
+      display: none;
+      background: #fff;
+      border: 1px solid #dfe8f8;
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-weight: 700;
+      color: #204db8;
+    }
+
+    @media (max-width: 1200px) {
+      .service-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .earth {
+        width: 620px;
+        height: 620px;
+        right: -140px;
+        top: 55px;
+      }
+
+      .orbit {
+        right: -70px;
+        top: 170px;
+      }
+
+      .satellite {
+        right: 70px;
+        top: 150px;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .nav-links,
+      .support-btn {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .hero-wrap {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 40px 0 0;
+      }
+
+      .hero-text {
+        max-width: 100%;
+        padding-top: 20px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .hero-visual {
+        height: 460px;
+      }
+
+      .earth {
+        width: 470px;
+        height: 470px;
+        right: -20px;
+        top: 0;
+      }
+
+      .orbit {
+        width: 360px;
+        height: 220px;
+        right: 20px;
+        top: 90px;
+      }
+
+      .satellite {
+        right: 120px;
+        top: 74px;
+        transform: scale(0.9) rotate(21deg);
+      }
+
+      .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-wrap {
+        height: 76px;
+      }
+
+      .logo {
+        font-size: 18px;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero h1 {
+        font-size: 44px;
+      }
+
+      .stats {
+        gap: 14px;
+      }
+
+      .stat + .stat {
+        border-left: 0;
+        padding-left: 0;
+      }
+
+      .hero-visual {
+        height: 320px;
+      }
+
+      .earth {
+        width: 320px;
+        height: 320px;
+        right: -30px;
+        top: 0;
+      }
+
+      .orbit {
+        width: 230px;
+        height: 140px;
+        right: 20px;
+        top: 80px;
+      }
+
+      .satellite {
+        right: 68px;
+        top: 55px;
+        transform: scale(0.72) rotate(21deg);
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container nav-wrap">
+      <a href="#" class="logo">
+        <span class="logo-icon"></span>
+        <span>Viewlink</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#" class="active">Home</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a href="#contact" class="support-btn">🎧 24/7 Support</a>
+      <button class="menu-toggle" id="menuToggle">Menu</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-wrap">
+      <div class="hero-text">
+        <span class="eyebrow">Complete Tech Solutions</span>
+        <h1>
+          Internet. CCTV.<br>
+          Solar. Network.<br>
+          <span class="accent">All Connected.</span>
+        </h1>
+        <p>
+          All-in-one solutions for connectivity, security, solar energy, and
+          network systems for homes and businesses.
+        </p>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-icon">👥</div>
+            <div>
+              <strong>10K+</strong>
+              <span>Happy Clients</span>
+            </div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-icon">🛡️</div>
+            <div>
+              <strong>99.9%</strong>
+              <span>Uptime</span>
+            </div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-icon">🎧</div>
+            <div>
+              <strong>24/7</strong>
+              <span>Tech Support</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="#services" class="cta-btn">Explore Services →</a>
+      </div>
+
+      <div class="hero-visual">
+        <div class="earth"></div>
+        <div class="orbit"></div>
+
+        <div class="satellite">
+          <div class="panel-left"></div>
+          <div class="arm-left"></div>
+          <div class="body"></div>
+          <div class="arm-right"></div>
+          <div class="panel-right"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Core Services</h2>
+        <div class="line"></div>
+      </div>
+
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="service-icon">📶</div>
+          <h3>High-Speed Internet</h3>
+          <p>
+            Fiber optic speed with unlimited data for seamless streaming,
+            gaming, and work.
+          </p>
+          <a href="#contact" class="outline-btn">Request Internet</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📹</div>
+          <h3>CCTV & Security</h3>
+          <p>
+            AI-powered cameras, motion alerts, cloud storage. Protect your
+            property 24/7.
+          </p>
+          <a href="#contact" class="outline-btn">Request CCTV</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">☀️</div>
+          <h3>Solar Panel Installation</h3>
+          <p>
+            Reduce electricity costs and switch to clean, sustainable solar
+            energy.
+          </p>
+          <a href="#contact" class="outline-btn">Request Solar</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🖧</div>
+          <h3>Network Installation</h3>
+          <p>
+            Complete network setup for fast, secure, and stable connectivity.
+          </p>
+          <a href="#contact" class="outline-btn">Request Network</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📡</div>
+          <h3>Satellite Internet</h3>
+          <p>
+            Global coverage, low-latency internet for remote and rural
+            locations.
+          </p>
+          <a href="#contact" class="outline-btn">Request Satellite</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📺</div>
+          <h3>Cable TV</h3>
+          <p>
+            Hundreds of HD channels, premium sports, movies, and kids content.
+          </p>
+          <a href="#contact" class="outline-btn">Request Cable TV</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-box">
+        <div class="contact-info">
+          <h3>Request a Quote or Support</h3>
+          <p>
+            Talk to our experts to customize a solution for your home or
+            business. Fast response within 24 hours.
+          </p>
+
+          <div class="info-list">
+            <div class="info-item">
+              <div class="info-icon">📞</div>
+              <div>+63 999 423 1344</div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">✉️</div>
+              <div>viewlink27@gmail.com</div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">📍</div>
+              <div>Montalban, Rizal Philippines</div>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" onsubmit="submitForm(event)">
+          <div class="form-row">
+            <input type="text" placeholder="Full name" required />
+            <input type="email" placeholder="Email address" required />
+          </div>
+
+          <select required>
+            <option value="">I'm interested in...</option>
+            <option>High-Speed Internet</option>
+            <option>CCTV & Security</option>
+            <option>Solar Panel Installation</option>
+            <option>Network Installation</option>
+            <option>Satellite Internet</option>
+            <option>Cable TV</option>
+            <option>Technical Support</option>
+          </select>
+
+          <textarea placeholder="Tell us about your requirements or location..." required></textarea>
+
+          <button type="submit" class="submit-btn">Send Request →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-wrap">
+      <div class="footer-brand">
+        <span class="logo-icon"></span>
+        <span style="font-size: 18px;">Viewlink</span>
+      </div>
+
+      <div class="footer-nav">
+        <a href="#">About Us</a>
+        <a href="#">Coverage Map</a>
+        <a href="#">Support</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+      </div>
+
+      <div class="copyright">© 2025 Viewlink. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    function submitForm(e) {
+      e.preventDefault();
+      alert("Your request has been sent successfully.");
+    }
+
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      if (window.innerWidth <= 980) {
+        const isOpen = navLinks.style.display === "flex";
+        navLinks.style.display = isOpen ? "none" : "flex";
+        navLinks.style.position = "absolute";
+        navLinks.style.top = "76px";
+        navLinks.style.left = "16px";
+        navLinks.style.right = "16px";
+        navLinks.style.flexDirection = "column";
+        navLinks.style.padding = "18px";
+        navLinks.style.background = "#fff";
+        navLinks.style.border = "1px solid #e7eefb";
+        navLinks.style.borderRadius = "18px";
+        navLinks.style.boxShadow = "0 20px 40px rgba(10, 31, 87, 0.08)";
+        navLinks.style.zIndex = "999";
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 980) {
+        navLinks.removeAttribute("style");
+      }
+    });
+  </script>
+</body>
+</html>
