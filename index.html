@@ -212,38 +212,38 @@
   position:relative;
   z-index:2;
   display:grid;
-  grid-template-columns:minmax(0, 580px) 1fr;
+  grid-template-columns:620px 1fr;
   align-items:center;
   min-height:720px;
-  gap:0;
+  gap:18px;
 }
 
 .hero-text{
   color:#fff;
   padding:56px 0 46px;
-  max-width:580px;
+  max-width:620px;
   position:relative;
   z-index:5;
 }
 
 .hero h1{
-  font-size:clamp(28px, 3.5vw, 52px);
-  line-height:1.08;
-  letter-spacing:-1.2px;
+  font-size:56px;
+  line-height:1.06;
+  letter-spacing:-1.8px;
   font-weight:800;
   margin-bottom:18px;
-
+  max-width:620px;
   white-space:normal;
   word-break:keep-all;
   overflow-wrap:normal;
 }
 
 .hero p{
-  font-size:16px;
+  font-size:17px;
   line-height:1.6;
   color:rgba(255,255,255,.82);
-  max-width:520px;
-  margin-bottom:30px;
+  max-width:560px;
+  margin-bottom:34px;
 }
 
     .stats{
@@ -314,7 +314,7 @@
   height:720px;
   display:flex;
   align-items:center;
-  justify-content:center;
+  justify-content:flex-end;
   overflow:visible;
 }
 
@@ -332,17 +332,17 @@
 .hero-globe{
   position:relative;
   z-index:1;
-  width:940px;
+  width:980px;
   max-width:none;
   height:auto;
-  transform:translateX(0);
+  transform:translateX(30px);
   filter:brightness(1.02) contrast(1.03);
   animation:floatGlobe 8s ease-in-out infinite;
 }
 
 @keyframes floatGlobe{
-  0%,100%{ transform:translateX(0) translateY(0); }
-  50%{ transform:translateX(0) translateY(-6px); }
+  0%,100%{ transform:translateX(30px) translateY(0); }
+  50%{ transform:translateX(30px) translateY(-6px); }
 }
 
     /* SERVICES */
