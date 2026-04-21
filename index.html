@@ -403,18 +403,25 @@
       box-shadow:0 18px 35px rgba(17,40,102,.10);
     }
 
-    .service-icon{
-      width:72px;
-      height:72px;
-      margin:0 auto 18px;
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      font-size:28px;
-      background:linear-gradient(180deg,#eff5ff,#f8fbff);
-      color:#256dff;
-      border:1px solid #e5edf9;
-    }
+.service-icon{
+  width:110px;
+  height:110px;
+  margin:0 auto 18px;
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid #e5edf9;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.service-icon img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
 
     .service-card h3{
       font-size:18px;
@@ -790,7 +797,7 @@
       <div class="service-grid">
         <div class="service-card">
 <div class="service-icon">
-  <img src="internet.jpg">
+  <img src="internet.png" alt="High-Speed Internet">
 </div>
           <h3>High-Speed Internet</h3>
           <p>
@@ -802,7 +809,7 @@
 
         <div class="service-card">
 <div class="service-icon">
-  <img src="cctv.jpg">
+  <img src="cctv.png" alt="CCTV & Security">
 </div>
           <h3>CCTV & Security</h3>
           <p>
@@ -814,7 +821,7 @@
 
         <div class="service-card">
 <div class="service-icon">
-  <img src="solar.jpg">
+  <img src="solar.png" alt="Solar Panel Installation">
 </div>
           <h3>Solar Panel Installation</h3>
           <p>
@@ -826,7 +833,7 @@
 
         <div class="service-card">
 <div class="service-icon">
-  <img src="network.jpg">
+  <img src="network.png" alt="Network Installation">
 </div>
           <h3>Network Installation</h3>
           <p>
@@ -837,7 +844,7 @@
 
         <div class="service-card">
 <div class="service-icon">
-  <img src="satellite.jpg">
+  <img src="satellite.png" alt="Satellite Internet">
 </div>
           <h3>Satellite Internet</h3>
           <p>
@@ -849,7 +856,7 @@
 
         <div class="service-card">
 <div class="service-icon">
-  <img src="tv.jpg">
+  <img src="tv.png" alt="Cable TV">
 </div>
           <h3>Cable TV</h3>
           <p>
