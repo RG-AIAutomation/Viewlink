@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Viewlink | Next-Gen Fiber, CCTV, Solar & Network Infrastructure</title>
+  <title>Viewlink | Next-Gen Fiber, CCTV, Solar &amp; Network Infrastructure</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="lenis.min.js"></script>
   <style>
     *, *::before, *::after {
       margin: 0;
@@ -42,11 +43,34 @@
     body {
       font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
       color: var(--text-main);
-      background-color: #ffffff;
+      background-color: #050914;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
+
+    /* ===================================================
+       SMOOTH SCROLL CANVAS BACKGROUND
+       =================================================== */
+    #bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      display: block;
+    }
+
+    .bg-canvas-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at 50% 30%, rgba(5, 9, 20, 0.22) 0%, rgba(5, 9, 20, 0.50) 100%);
+    }
+
 
     a {
       text-decoration: none;
@@ -228,11 +252,13 @@
        =================================================== */
     .hero {
       position: relative;
-      background: radial-gradient(circle at 80% 20%, #112555 0%, #0a142c 45%, #050b1a 100%);
+      z-index: 2;
+      background: radial-gradient(circle at 80% 20%, rgba(17, 37, 85, 0.35) 0%, rgba(10, 20, 44, 0.5) 45%, rgba(5, 11, 26, 0.65) 100%);
       color: #ffffff;
       padding: 85px 0 100px;
       overflow: hidden;
     }
+
 
     .hero::before {
       content: "";
@@ -522,8 +548,9 @@
        =================================================== */
     .services-section {
       padding: 100px 0;
-      background-color: var(--bg-light);
       position: relative;
+      z-index: 2;
+      background: transparent;
     }
 
     .section-header {
@@ -537,21 +564,23 @@
       align-items: center;
       gap: 8px;
       padding: 6px 16px;
-      background: #eff6ff;
-      border: 1px solid #bfdbfe;
+      background: rgba(30, 102, 255, 0.22);
+      border: 1px solid rgba(147, 197, 253, 0.4);
       border-radius: var(--radius-full);
       font-size: 12.5px;
       font-weight: 700;
-      color: #1d4ed8;
+      color: #93c5fd;
       text-transform: uppercase;
       letter-spacing: 0.8px;
       margin-bottom: 14px;
+      backdrop-filter: blur(8px);
     }
 
     .section-header h2 {
       font-size: clamp(30px, 3.4vw, 44px);
       font-weight: 800;
-      color: var(--navy-950);
+      color: #ffffff;
+      text-shadow: 0 3px 18px rgba(0, 0, 0, 0.7);
       letter-spacing: -1.2px;
       line-height: 1.15;
       margin-bottom: 16px;
@@ -559,7 +588,8 @@
 
     .section-header p {
       font-size: 16.5px;
-      color: var(--text-muted);
+      color: #cbd5e1;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
       line-height: 1.6;
     }
 
@@ -574,13 +604,15 @@
 
     /* Service Card */
     .service-card {
-      background: var(--card-bg);
-      border: 1px solid rgba(226, 232, 240, 0.95);
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1.5px solid rgba(255, 255, 255, 0.75);
       border-radius: var(--radius-lg);
       padding: 32px 30px 26px;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.04), 0 2px 4px -2px rgba(15, 23, 42, 0.03);
+      box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.3), 0 4px 10px rgba(0, 0, 0, 0.15);
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
                   box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
                   border-color 0.3s ease;
@@ -589,9 +621,11 @@
 
     .service-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 22px 40px -8px rgba(15, 23, 42, 0.12), 0 0 0 1.5px rgba(30, 102, 255, 0.25);
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 24px 48px -8px rgba(0, 0, 0, 0.38), 0 0 0 1.5px rgba(30, 102, 255, 0.35);
       border-color: #bfdbfe;
     }
+
 
     /* Card Top: Image/Thumbnail + Badge */
     .card-top {
@@ -765,19 +799,24 @@
        =================================================== */
     .contact-section {
       padding: 100px 0;
-      background: #ffffff;
+      position: relative;
+      z-index: 2;
+      background: transparent;
     }
 
     .contact-wrapper {
-      background: linear-gradient(135deg, #f8fafc 0%, #edf4ff 100%);
-      border: 1px solid rgba(226, 232, 240, 0.9);
+      background: rgba(255, 255, 255, 0.90);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1.5px solid rgba(255, 255, 255, 0.8);
       border-radius: var(--radius-lg);
       padding: 56px 48px;
       display: grid;
       grid-template-columns: 0.9fr 1.1fr;
       gap: 56px;
-      box-shadow: var(--shadow-md);
+      box-shadow: 0 24px 50px -12px rgba(0, 0, 0, 0.35);
     }
+
 
     .contact-info h3 {
       font-size: clamp(28px, 3.2vw, 38px);
@@ -918,11 +957,16 @@
        FOOTER
        =================================================== */
     .footer {
-      background: #060d1f;
+      position: relative;
+      z-index: 2;
+      background: rgba(6, 13, 31, 0.72);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       color: #94a3b8;
       padding: 60px 0 32px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
     }
+
 
     .footer-top {
       display: flex;
@@ -1025,6 +1069,10 @@
   </style>
 </head>
 <body>
+
+  <!-- Smooth Scroll Background Canvas and Overlay -->
+  <canvas id="bg-canvas"></canvas>
+  <div class="bg-canvas-overlay"></div>
 
   <!-- NAVBAR -->
   <header class="navbar">
@@ -1532,6 +1580,7 @@
   </footer>
 
   <script>
+    // Form submission handler
     function handleForm(e) {
       e.preventDefault();
       alert("Thank you! Your service inquiry has been received. A Viewlink specialist will reach out within 24 hours.");
@@ -1564,6 +1613,183 @@
         navCenter.removeAttribute("style");
       }
     });
+
+    /* ===================================================
+       218-FRAME SMOOTH SCROLL BACKGROUND CONTROLLER
+       =================================================== */
+    (function () {
+      'use strict';
+
+      const TOTAL_FRAMES = 218;
+      const FRAME_PREFIX = 'ezgif-frame-';
+      const FRAME_EXT = '.jpg';
+      const CACHE_KEY = 'v_solar_' + Date.now();
+
+      const canvas = document.getElementById('bg-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d', { alpha: false });
+
+      const images = new Array(TOTAL_FRAMES + 1);
+      const isLoaded = new Array(TOTAL_FRAMES + 1).fill(false);
+
+      let targetProgress = 0;
+      let currentProgress = 0;
+      let lastDrawnIndex = -1;
+      const LERP_FACTOR = 0.085;
+
+      function getFrameSrc(index) {
+        const numStr = String(index).padStart(3, '0');
+        return `${FRAME_PREFIX}${numStr}${FRAME_EXT}?v=${CACHE_KEY}`;
+      }
+
+      function resizeCanvas() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+
+        if (canvas.width !== w * dpr || canvas.height !== h * dpr) {
+          canvas.width = Math.round(w * dpr);
+          canvas.height = Math.round(h * dpr);
+          canvas.style.width = w + 'px';
+          canvas.style.height = h + 'px';
+
+          ctx.imageSmoothingEnabled = true;
+          ctx.imageSmoothingQuality = 'high';
+
+          if (lastDrawnIndex > 0) {
+            renderFrame(lastDrawnIndex, true);
+          }
+        }
+      }
+
+      function drawImageCover(img) {
+        if (!img || !img.complete || img.naturalWidth === 0) return;
+
+        const cw = canvas.width;
+        const ch = canvas.height;
+        const iw = img.naturalWidth;
+        const ih = img.naturalHeight;
+
+        const scale = Math.max(cw / iw, ch / ih);
+        const dw = iw * scale;
+        const dh = ih * scale;
+        const dx = (cw - dw) / 2;
+        const dy = (ch - dh) / 2;
+
+        ctx.drawImage(img, dx, dy, dw, dh);
+      }
+
+      function getNearestLoadedFrame(targetIdx) {
+        if (isLoaded[targetIdx] && images[targetIdx] && images[targetIdx].naturalWidth > 0) {
+          return images[targetIdx];
+        }
+        for (let offset = 1; offset < TOTAL_FRAMES; offset++) {
+          const prev = targetIdx - offset;
+          if (prev >= 1 && isLoaded[prev] && images[prev] && images[prev].naturalWidth > 0) {
+            return images[prev];
+          }
+          const next = targetIdx + offset;
+          if (next <= TOTAL_FRAMES && isLoaded[next] && images[next] && images[next].naturalWidth > 0) {
+            return images[next];
+          }
+        }
+        return (isLoaded[1] && images[1] && images[1].naturalWidth > 0) ? images[1] : null;
+      }
+
+      function renderFrame(index, force) {
+        if (index === lastDrawnIndex && !force) return;
+        const img = getNearestLoadedFrame(index);
+        if (!img) return;
+
+        drawImageCover(img);
+        lastDrawnIndex = index;
+      }
+
+      function getScrollProgress() {
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (scrollHeight <= 0) return 0;
+        const progress = window.scrollY / scrollHeight;
+        return Math.min(1, Math.max(0, isNaN(progress) ? 0 : progress));
+      }
+
+      function updateScroll() {
+        targetProgress = getScrollProgress();
+      }
+
+      function animationLoop() {
+        targetProgress = getScrollProgress();
+
+        if (isNaN(currentProgress)) {
+          currentProgress = targetProgress;
+        } else {
+          currentProgress += (targetProgress - currentProgress) * LERP_FACTOR;
+        }
+
+        const targetFrame = Math.round(1 + currentProgress * (TOTAL_FRAMES - 1));
+        const clampedFrame = Math.min(TOTAL_FRAMES, Math.max(1, isNaN(targetFrame) ? 1 : targetFrame));
+
+        if (clampedFrame !== lastDrawnIndex) {
+          renderFrame(clampedFrame, false);
+        }
+
+        requestAnimationFrame(animationLoop);
+      }
+
+      function preloadImages() {
+        // Frame 1 immediate load
+        const first = new Image();
+        first.src = getFrameSrc(1);
+        images[1] = first;
+        first.onload = function () {
+          isLoaded[1] = true;
+          resizeCanvas();
+          renderFrame(1, true);
+        };
+
+        // Remaining frames progressive preload
+        for (let i = 2; i <= TOTAL_FRAMES; i++) {
+          const img = new Image();
+          img.src = getFrameSrc(i);
+          images[i] = img;
+          img.onload = function () {
+            isLoaded[i] = true;
+          };
+        }
+      }
+
+      function initLenis() {
+        if (typeof Lenis !== 'undefined') {
+          try {
+            const lenis = new Lenis({
+              duration: 1.2,
+              easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+              smoothWheel: true,
+            });
+
+            lenis.on('scroll', () => {
+              updateScroll();
+            });
+
+            function lenisRaf(time) {
+              lenis.raf(time);
+              requestAnimationFrame(lenisRaf);
+            }
+            requestAnimationFrame(lenisRaf);
+          } catch (err) {
+            console.warn('Lenis fallback to native scroll', err);
+          }
+        }
+      }
+
+      window.addEventListener('resize', resizeCanvas, { passive: true });
+      window.addEventListener('scroll', updateScroll, { passive: true });
+
+      resizeCanvas();
+      preloadImages();
+      initLenis();
+      updateScroll();
+      requestAnimationFrame(animationLoop);
+    })();
   </script>
 </body>
 </html>
