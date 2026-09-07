@@ -3,977 +3,1565 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Viewlink | Internet. CCTV. Solar. Network.</title>
+  <title>Viewlink | Next-Gen Fiber, CCTV, Solar & Network Infrastructure</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    :root{
-      --primary:#1e66ff;
-      --text:#0e1b3d;
-      --muted:#6a7691;
-      --border:#e8edf7;
-      --bg-soft:#f5f8ff;
+    :root {
+      --primary: #1e66ff;
+      --primary-dark: #0f4bd8;
+      --primary-light: #eaf1ff;
+      --navy-950: #070d1e;
+      --navy-900: #0b152d;
+      --navy-800: #112248;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --bg-light: #f8fafc;
+      --card-bg: #ffffff;
+      --border-color: #e2e8f0;
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-full: 9999px;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 6px 18px -3px rgba(15, 23, 42, 0.06);
     }
 
-    html{
-      scroll-behavior:smooth;
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
     }
 
-    body{
-      font-family:"Inter",sans-serif;
-      color:var(--text);
-      background:#ffffff;
-      line-height:1.5;
+    body {
+      font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+      color: var(--text-main);
+      background-color: #ffffff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    a{
-      text-decoration:none;
-      color:inherit;
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 
-    img{
-      display:block;
-      max-width:100%;
+    img {
+      display: block;
+      max-width: 100%;
     }
 
-    button,input,select,textarea{
-      font:inherit;
+    button, input, select, textarea {
+      font-family: inherit;
     }
 
-    .container{
-      width:min(1200px, calc(100% - 32px));
-      margin:0 auto;
+    .container {
+      width: min(1220px, calc(100% - 40px));
+      margin-inline: auto;
     }
 
-    /* NAVBAR */
-    .navbar{
-      background:#fff;
-      border-bottom:1px solid #f0f3fa;
-      position:sticky;
-      top:0;
-      z-index:1000;
+    /* ===================================================
+       HEADER & NAVIGATION
+       =================================================== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.85);
+      transition: all 0.25s ease;
     }
 
-    .nav-wrap{
-      height:86px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
+    .nav-wrap {
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
     }
 
-    .logo{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      font-size:20px;
-      font-weight:800;
-      color:#10245c;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--navy-950);
     }
 
-    .logo-icon{
-      width:34px;
-      height:34px;
-      border-radius:50%;
-      position:relative;
-      background:linear-gradient(145deg,#12358f,#0b1e55);
-      box-shadow:0 10px 25px rgba(30,102,255,0.2);
-      flex-shrink:0;
+    .brand-logo-img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      border-radius: 8px;
     }
 
-    .logo-icon::before{
-      content:"";
-      position:absolute;
-      width:18px;
-      height:18px;
-      border:3px solid #fff;
-      border-top-color:transparent;
-      border-left-color:transparent;
-      border-radius:50%;
-      top:5px;
-      left:6px;
-      transform:rotate(20deg);
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #1e66ff 0%, #0c3ab5 100%);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 18px rgba(30, 102, 255, 0.35);
+      color: #ffffff;
+      flex-shrink: 0;
     }
 
-    .logo-icon::after{
-      content:"";
-      position:absolute;
-      width:6px;
-      height:6px;
-      background:#fff;
-      border-radius:50%;
-      right:4px;
-      top:7px;
+    .brand-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+      stroke-width: 2.2;
+      fill: none;
     }
 
-    .nav-links{
-      display:flex;
-      align-items:center;
-      gap:36px;
-      font-weight:600;
-      color:#22315f;
+    .nav-center {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      font-weight: 600;
+      font-size: 14.5px;
+      color: #334155;
     }
 
-    .nav-links a{
-      position:relative;
-      padding:6px 0;
-      transition:.25s ease;
+    .nav-center a {
+      position: relative;
+      padding: 6px 0;
+      transition: color 0.2s ease;
     }
 
-    .nav-links a:hover,
-    .nav-links a.active{
-      color:var(--primary);
+    .nav-center a:hover,
+    .nav-center a.active {
+      color: var(--primary);
     }
 
-    .nav-links a.active::after,
-    .nav-links a:hover::after{
-      content:"";
-      position:absolute;
-      left:0;
-      bottom:-8px;
-      width:100%;
-      height:3px;
-      background:var(--primary);
-      border-radius:99px;
+    .nav-center a.active::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2.5px;
+      background: var(--primary);
+      border-radius: var(--radius-full);
     }
 
-    .support-btn{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:12px 18px;
-      border:2px solid rgba(30,102,255,.28);
-      color:#204db8;
-      font-weight:700;
-      border-radius:999px;
-      transition:.25s ease;
-      background:#fff;
-      white-space:nowrap;
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
     }
 
-    .support-btn:hover{
-      background:#f5f8ff;
-      transform:translateY(-1px);
+    .live-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 700;
+      color: #15803d;
     }
 
-    .menu-toggle{
-      display:none;
-      background:#fff;
-      border:1px solid #dfe8f8;
-      border-radius:12px;
-      padding:10px 14px;
-      font-weight:700;
-      color:#204db8;
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
+      animation: pulseGreen 2s infinite;
     }
 
-    /* HERO */
-    .hero{
-      position:relative;
-      overflow:hidden;
-      min-height:720px;
-      background:#000;
+    @keyframes pulseGreen {
+      0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
+      70% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
     }
 
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background-image:
-        radial-gradient(2px 2px at 8% 18%, rgba(255,255,255,.55), transparent),
-        radial-gradient(1px 1px at 16% 44%, rgba(255,255,255,.35), transparent),
-        radial-gradient(2px 2px at 26% 22%, rgba(255,255,255,.4), transparent),
-        radial-gradient(1px 1px at 34% 68%, rgba(255,255,255,.28), transparent),
-        radial-gradient(2px 2px at 58% 14%, rgba(255,255,255,.42), transparent),
-        radial-gradient(1px 1px at 67% 40%, rgba(255,255,255,.32), transparent),
-        radial-gradient(2px 2px at 78% 28%, rgba(255,255,255,.38), transparent),
-        radial-gradient(1px 1px at 88% 62%, rgba(255,255,255,.3), transparent);
-      opacity:.45;
-      pointer-events:none;
-      z-index:1;
+    .support-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: #ffffff;
+      border: 1.5px solid #dbeafe;
+      border-radius: var(--radius-full);
+      color: var(--primary);
+      font-size: 13.5px;
+      font-weight: 700;
+      transition: all 0.2s ease;
     }
 
-    .hero::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(90deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.56) 30%, rgba(0,0,0,.18) 55%, rgba(0,0,0,.08) 100%);
-      z-index:1;
-      pointer-events:none;
+    .support-btn:hover {
+      background: var(--primary-light);
+      border-color: #bfdbfe;
+      transform: translateY(-1px);
     }
 
-.hero-wrap{
-  position:relative;
-  z-index:2;
-  display:grid;
-  grid-template-columns:620px 1fr;
-  align-items:center;
-  min-height:720px;
-  gap:18px;
-}
-
-.hero-text{
-  color:#fff;
-  padding:56px 0 46px;
-  max-width:620px;
-  position:relative;
-  z-index:5;
-}
-
-.hero h1{
-  font-size:56px;
-  line-height:1.06;
-  letter-spacing:-1.8px;
-  font-weight:800;
-  margin-bottom:18px;
-  max-width:620px;
-  white-space:normal;
-  word-break:keep-all;
-  overflow-wrap:normal;
-}
-
-.hero p{
-  font-size:17px;
-  line-height:1.6;
-  color:rgba(255,255,255,.82);
-  max-width:560px;
-  margin-bottom:34px;
-}
-
-    .stats{
-      display:flex;
-      align-items:center;
-      flex-wrap:wrap;
-      gap:18px;
-      margin-bottom:30px;
+    .menu-toggle {
+      display: none;
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 8px 12px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy-900);
+      cursor: pointer;
     }
 
-    .stat{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width:145px;
+    /* ===================================================
+       HERO SECTION
+       =================================================== */
+    .hero {
+      position: relative;
+      background: radial-gradient(circle at 80% 20%, #112555 0%, #0a142c 45%, #050b1a 100%);
+      color: #ffffff;
+      padding: 85px 0 100px;
+      overflow: hidden;
     }
 
-    .stat + .stat{
-      padding-left:18px;
-      border-left:1px solid rgba(255,255,255,.18);
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: 
+        radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+        radial-gradient(rgba(30, 102, 255, 0.25) 1px, transparent 1px);
+      background-size: 40px 40px, 80px 80px;
+      background-position: 0 0, 20px 20px;
+      opacity: 0.45;
+      pointer-events: none;
     }
 
-    .stat-icon{
-      width:42px;
-      height:42px;
-      border-radius:50%;
-      background:rgba(30,102,255,.14);
-      border:1px solid rgba(255,255,255,.08);
-      display:grid;
-      place-items:center;
-      font-size:18px;
-      flex-shrink:0;
+    .hero-glow-orb {
+      position: absolute;
+      top: -10%;
+      right: 15%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(30, 102, 255, 0.3) 0%, rgba(6, 182, 212, 0.1) 50%, transparent 70%);
+      filter: blur(60px);
+      pointer-events: none;
+      z-index: 1;
     }
 
-    .stat strong{
-      display:block;
-      font-size:16px;
-      font-weight:800;
-      color:#fff;
+    .hero-wrap {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 48px;
     }
 
-    .stat span{
-      display:block;
-      font-size:13px;
-      color:rgba(255,255,255,.72);
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 14px;
+      background: rgba(30, 102, 255, 0.18);
+      border: 1px solid rgba(147, 197, 253, 0.3);
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #93c5fd;
+      margin-bottom: 22px;
+      text-transform: uppercase;
     }
 
-    .cta-btn{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:16px 24px;
-      border-radius:12px;
-      background:linear-gradient(180deg,#2e7cff,#145fef);
-      color:#fff;
-      font-weight:700;
-      box-shadow:0 20px 45px rgba(30,102,255,.28);
-      transition:.25s ease;
+    .hero-tag span {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: #60a5fa;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #60a5fa;
     }
 
-    .cta-btn:hover{
-      transform:translateY(-2px);
-      background:linear-gradient(180deg,#3b86ff,#145fef);
+    .hero h1 {
+      font-size: clamp(34px, 4.2vw, 54px);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -1.5px;
+      margin-bottom: 22px;
+      color: #ffffff;
     }
 
-.hero-visual{
-  position:relative;
-  height:720px;
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
-  overflow:visible;
-}
-
-    .hero-visual::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(90deg, transparent 0%, transparent 72%, #000 100%),
-        linear-gradient(180deg, transparent 0%, transparent 78%, #000 100%);
-      z-index:0;
-      pointer-events:none;
+    .hero h1 .gradient-text {
+      background: linear-gradient(110deg, #ffffff 30%, #93c5fd 75%, #60a5fa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-.hero-globe{
-  position:relative;
-  z-index:1;
-  width:980px;
-  max-width:none;
-  height:auto;
-  transform:translateX(30px);
-  filter:brightness(1.02) contrast(1.03);
-  animation:floatGlobe 8s ease-in-out infinite;
-}
-
-@keyframes floatGlobe{
-  0%,100%{ transform:translateX(30px) translateY(0); }
-  50%{ transform:translateX(30px) translateY(-6px); }
-}
-
-    /* SERVICES */
-    .services{
-      padding:26px 0 18px;
-      background:#fff;
+    .hero p {
+      font-size: 17.5px;
+      line-height: 1.65;
+      color: #cbd5e1;
+      max-width: 580px;
+      margin-bottom: 34px;
     }
 
-    .section-title{
-      text-align:center;
-      margin-bottom:22px;
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 44px;
     }
 
-    .section-title h2{
-      font-size:clamp(28px, 3vw, 42px);
-      font-weight:800;
-      color:#10245c;
-      margin-bottom:10px;
-      letter-spacing:-1px;
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px 28px;
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: var(--radius-md);
+      box-shadow: 0 10px 25px -3px rgba(37, 99, 235, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .line{
-      width:72px;
-      height:4px;
-      border-radius:99px;
-      background:linear-gradient(90deg,#1e66ff,#68a2ff);
-      margin:0 auto;
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px -3px rgba(37, 99, 235, 0.55);
     }
 
-    .service-grid{
-      display:grid;
-      grid-template-columns:repeat(6, 1fr);
-      gap:18px;
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 15px 24px;
+      background: rgba(255, 255, 255, 0.07);
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(8px);
+      transition: all 0.2s ease;
     }
 
-    .service-card{
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius:20px;
-      padding:28px 18px 20px;
-      text-align:center;
-      box-shadow:0 10px 25px rgba(17,40,102,.05);
-      transition:.25s ease;
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.13);
+      transform: translateY(-1px);
     }
 
-    .service-card:hover{
-      transform:translateY(-6px);
-      box-shadow:0 18px 35px rgba(17,40,102,.10);
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      max-width: 560px;
     }
 
-.service-icon{
-  width:110px;
-  height:110px;
-  margin:0 auto 18px;
-  border-radius:18px;
-  overflow:hidden;
-  border:1px solid #e5edf9;
-  background:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.service-icon img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
-
-    .service-card h3{
-      font-size:18px;
-      line-height:1.2;
-      min-height:44px;
-      margin-bottom:10px;
-      color:#13285f;
-      font-weight:800;
+    .stat-item strong {
+      display: block;
+      font-size: 26px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
     }
 
-    .service-card p{
-      color:var(--muted);
-      font-size:14px;
-      margin-bottom:16px;
-      min-height:82px;
+    .stat-item span {
+      font-size: 13px;
+      color: #94a3b8;
+      font-weight: 500;
     }
 
-    .outline-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-width:135px;
-      padding:10px 14px;
-      border:1.5px solid #b9cffd;
-      border-radius:12px;
-      color:#256dff;
-      font-weight:700;
-      font-size:14px;
-      background:#fff;
-      transition:.25s ease;
+    /* Enterprise Infrastructure Dashboard */
+    .infra-widget {
+      background: rgba(11, 21, 45, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
+      position: relative;
     }
 
-    .outline-btn:hover{
-      background:#f4f8ff;
-      border-color:#8fb3ff;
+    .widget-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 16px;
+      margin-bottom: 20px;
     }
 
-    /* CONTACT */
-    .contact-section{
-      padding:18px 0 36px;
+    .widget-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #f1f5f9;
     }
 
-    .contact-box{
-      background:linear-gradient(180deg,#f7faff,#f3f7ff);
-      border:1px solid #e7eefb;
-      border-radius:22px;
-      padding:28px;
-      display:grid;
-      grid-template-columns:.9fr 1.3fr;
-      gap:26px;
+    .widget-tag {
+      font-size: 11px;
+      font-weight: 700;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      padding: 4px 8px;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(56, 189, 248, 0.25);
     }
 
-    .contact-info h3{
-      font-size:clamp(28px, 3vw, 38px);
-      line-height:1.05;
-      color:#0f2356;
-      margin-bottom:12px;
-      font-weight:800;
-      letter-spacing:-1px;
+    .network-nodes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
     }
 
-    .contact-info p{
-      font-size:16px;
-      color:var(--muted);
-      max-width:430px;
-      margin-bottom:24px;
+    .node-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      transition: background 0.2s ease;
     }
 
-    .info-list{
-      display:grid;
-      gap:16px;
+    .node-card:hover {
+      background: rgba(255, 255, 255, 0.07);
     }
 
-    .info-item{
-      display:flex;
-      align-items:flex-start;
-      gap:12px;
-      color:#11275a;
-      font-weight:600;
+    .node-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
     }
 
-    .info-icon{
-      width:38px;
-      height:38px;
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      background:#ffffff;
-      border:1px solid #e4ebfb;
-      color:#1e66ff;
-      flex-shrink:0;
+    .node-label {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #94a3b8;
     }
 
-    .contact-form{
-      display:grid;
-      gap:14px;
-      align-content:start;
+    .node-value {
+      font-size: 18px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.3px;
     }
 
-    .form-row{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
+    .node-sub {
+      font-size: 11px;
+      color: #34d399;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .speed-meter {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-md);
+      padding: 16px;
+    }
+
+    .speed-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 600;
+      color: #cbd5e1;
+      margin-bottom: 8px;
+    }
+
+    .progress-track {
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 94%;
+      background: linear-gradient(90deg, #3b82f6, #06b6d4, #10b981);
+      border-radius: var(--radius-full);
+    }
+
+    .meter-footer {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #94a3b8;
+    }
+
+    /* ===================================================
+       SERVICES SECTION - BALANCED BY 2s WITH PICTURES/IMAGES
+       =================================================== */
+    .services-section {
+      padding: 100px 0;
+      background-color: var(--bg-light);
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 56px;
+    }
+
+    .section-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: var(--radius-full);
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #1d4ed8;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 14px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(30px, 3.4vw, 44px);
+      font-weight: 800;
+      color: var(--navy-950);
+      letter-spacing: -1.2px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .section-header p {
+      font-size: 16.5px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* 2-COLUMN BALANCED GRID */
+    .services-grid-2col {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    /* Service Card */
+    .service-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(226, 232, 240, 0.95);
+      border-radius: var(--radius-lg);
+      padding: 32px 30px 26px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.04), 0 2px 4px -2px rgba(15, 23, 42, 0.03);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.3s ease;
+      position: relative;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 22px 40px -8px rgba(15, 23, 42, 0.12), 0 0 0 1.5px rgba(30, 102, 255, 0.25);
+      border-color: #bfdbfe;
+    }
+
+    /* Card Top: Image/Thumbnail + Badge */
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22px;
+      gap: 16px;
+    }
+
+    /* Dedicated Image Container */
+    .service-image-box {
+      width: 88px;
+      height: 88px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1.5px solid #e2e8f0;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .service-card:hover .service-image-box {
+      transform: scale(1.06);
+      border-color: #bfdbfe;
+      box-shadow: 0 8px 20px rgba(30, 102, 255, 0.22);
+    }
+
+    .service-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Fallback Icon Badge (Shown if image file is not on disk yet) */
+    .icon-badge {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      display: grid;
+      place-items: center;
+      color: var(--primary);
+    }
+
+    .icon-badge svg {
+      width: 32px;
+      height: 32px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .service-badge {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+      white-space: nowrap;
+    }
+
+    .service-card h3 {
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--navy-950);
+      letter-spacing: -0.4px;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    .service-desc {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    /* Feature Checkmarks */
+    .feature-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin-bottom: 26px;
+      padding-top: 14px;
+      border-top: 1px solid #f1f5f9;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13.5px;
+      color: #334155;
+      font-weight: 500;
+    }
+
+    .check-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #dcfce7;
+      color: #16a34a;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    /* Bottom-Aligned Button */
+    .card-footer {
+      margin-top: auto;
+      padding-top: 18px;
+      border-top: 1px solid #f8fafc;
+    }
+
+    .service-btn {
+      width: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 20px;
+      background: #ffffff;
+      border: 1.5px solid #cbd5e1;
+      border-radius: var(--radius-md);
+      color: var(--navy-900);
+      font-size: 14px;
+      font-weight: 700;
+      transition: all 0.22s ease;
+    }
+
+    .service-btn svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.2s ease;
+    }
+
+    .service-btn:hover {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 8px 20px rgba(30, 102, 255, 0.25);
+    }
+
+    .service-btn:hover svg {
+      transform: translateX(4px);
+    }
+
+    /* Center 7th card if odd number */
+    .service-card:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+      justify-self: center;
+      width: 100%;
+      max-width: calc(50% - 14px);
+    }
+
+    /* ===================================================
+       CONTACT & QUOTE SECTION
+       =================================================== */
+    .contact-section {
+      padding: 100px 0;
+      background: #ffffff;
+    }
+
+    .contact-wrapper {
+      background: linear-gradient(135deg, #f8fafc 0%, #edf4ff 100%);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      border-radius: var(--radius-lg);
+      padding: 56px 48px;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 56px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .contact-info h3 {
+      font-size: clamp(28px, 3.2vw, 38px);
+      font-weight: 800;
+      color: var(--navy-950);
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .contact-info p {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 32px;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 18px;
+      margin-bottom: 36px;
+    }
+
+    .info-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 18px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .info-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: #eff6ff;
+      color: var(--primary);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .info-card-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .info-card-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .info-card-val {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy-950);
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 16px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #334155;
     }
 
     .contact-form input,
     .contact-form select,
-    .contact-form textarea{
-      width:100%;
-      background:#fff;
-      border:1px solid #dfe8f7;
-      border-radius:12px;
-      padding:14px 16px;
-      outline:none;
-      transition:.2s ease;
-      color:#122960;
+    .contact-form textarea {
+      width: 100%;
+      background: #ffffff;
+      border: 1.5px solid #cbd5e1;
+      border-radius: var(--radius-sm);
+      padding: 13px 16px;
+      font-size: 14.5px;
+      color: var(--navy-950);
+      outline: none;
+      transition: all 0.2s ease;
     }
 
     .contact-form input:focus,
     .contact-form select:focus,
-    .contact-form textarea:focus{
-      border-color:#79a9ff;
-      box-shadow:0 0 0 4px rgba(30,102,255,.08);
+    .contact-form textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(30, 102, 255, 0.12);
     }
 
-    .contact-form textarea{
-      min-height:120px;
-      resize:vertical;
+    .contact-form textarea {
+      min-height: 120px;
+      resize: vertical;
     }
 
-    .submit-btn{
-      padding:15px 20px;
-      background:linear-gradient(180deg,#2d7cff,#145fef);
-      color:#fff;
-      border:0;
-      border-radius:12px;
-      font-weight:700;
-      cursor:pointer;
-      transition:.25s ease;
-      box-shadow:0 16px 30px rgba(30,102,255,.22);
+    .submit-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px 28px;
+      background: linear-gradient(135deg, #1e66ff 0%, #124ad3 100%);
+      color: #ffffff;
+      font-size: 15.5px;
+      font-weight: 700;
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      box-shadow: 0 12px 24px -4px rgba(30, 102, 255, 0.35);
+      transition: all 0.22s ease;
     }
 
-    .submit-btn:hover{
-      transform:translateY(-2px);
+    .submit-btn:hover {
+      background: linear-gradient(135deg, #2b70ff 0%, #1752e2 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 30px -4px rgba(30, 102, 255, 0.45);
     }
 
-    /* FOOTER */
-    .footer{
-      background:#06163c;
-      color:rgba(255,255,255,.86);
-      padding:22px 0;
-      margin-top:10px;
+    /* ===================================================
+       FOOTER
+       =================================================== */
+    .footer {
+      background: #060d1f;
+      color: #94a3b8;
+      padding: 60px 0 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    .footer-wrap{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-      flex-wrap:wrap;
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    .footer-brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      font-size:28px;
-      font-weight:800;
-      color:#fff;
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 22px;
+      font-weight: 800;
+      color: #ffffff;
     }
 
-    .footer-nav{
-      display:flex;
-      align-items:center;
-      gap:28px;
-      flex-wrap:wrap;
-      font-weight:500;
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      font-size: 14.5px;
+      font-weight: 600;
     }
 
-    .footer-nav a:hover{
-      color:#90b5ff;
+    .footer-links a:hover {
+      color: #ffffff;
     }
 
-    .copyright{
-      font-size:14px;
-      color:rgba(255,255,255,.75);
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 32px;
+      font-size: 13.5px;
+      flex-wrap: wrap;
+      gap: 16px;
     }
 
-    @media (max-width:1200px){
-      .service-grid{
-        grid-template-columns:repeat(3, 1fr);
+    /* ===================================================
+       RESPONSIVE BREAKPOINTS
+       =================================================== */
+    @media (max-width: 1024px) {
+      .hero-wrap {
+        grid-template-columns: 1fr;
+        gap: 40px;
       }
 
-      .hero-wrap{
-        grid-template-columns:minmax(0, 480px) 1fr;
-      }
-
-      .hero-globe{
-        width:900px;
-        transform:translateX(70px);
-      }
-    }
-
-    @media (max-width:980px){
-      .nav-links,
-      .support-btn{
-        display:none;
-      }
-
-      .menu-toggle{
-        display:inline-flex;
-      }
-
-      .hero-wrap{
-        grid-template-columns:1fr;
-        min-height:auto;
-        padding:36px 0 0;
-      }
-
-      .hero-text{
-        max-width:100%;
-        padding-top:18px;
-      }
-
-      .hero p{
-        font-size:18px;
-      }
-
-      .hero-visual{
-        height:500px;
-        justify-content:center;
-      }
-
-      .hero-globe{
-        width:760px;
-        transform:none;
-      }
-
-      .service-grid{
-        grid-template-columns:repeat(2, 1fr);
-      }
-
-      .contact-box{
-        grid-template-columns:1fr;
+      .contact-wrapper {
+        grid-template-columns: 1fr;
+        padding: 36px 28px;
+        gap: 36px;
       }
     }
 
-    @media (max-width:600px){
-      .nav-wrap{
-        height:76px;
+    @media (max-width: 768px) {
+      .nav-center, .nav-actions .support-btn {
+        display: none;
       }
 
-      .logo{
-        font-size:18px;
+      .menu-toggle {
+        display: block;
       }
 
-      .hero{
-        min-height:auto;
+      .services-grid-2col {
+        grid-template-columns: 1fr;
+        max-width: 520px;
       }
 
-      .hero h1{
-        font-size:44px;
+      .service-card:last-child:nth-child(odd) {
+        max-width: 100%;
       }
 
-      .stats{
-        gap:14px;
+      .hero {
+        padding: 60px 0 80px;
       }
 
-      .stat + .stat{
-        border-left:0;
-        padding-left:0;
+      .hero h1 {
+        font-size: 36px;
       }
 
-      .hero-visual{
-        height:340px;
+      .hero-stats {
+        grid-template-columns: 1fr;
+        gap: 14px;
       }
 
-      .hero-globe{
-        width:460px;
+      .form-row {
+        grid-template-columns: 1fr;
       }
 
-      .service-grid{
-        grid-template-columns:1fr;
-      }
-
-      .form-row{
-        grid-template-columns:1fr;
-      }
-
-      .footer-wrap{
-        flex-direction:column;
-        align-items:flex-start;
+      .footer-top, .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- NAVBAR -->
   <header class="navbar">
     <div class="container nav-wrap">
-      <a href="#" class="logo">
-        <img src="logo.png" style="width:34px; height:34px;">
+      <a href="#" class="brand" aria-label="Viewlink Homepage">
+        <img src="logo.png" alt="Viewlink Logo" class="brand-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+        <div class="brand-icon" style="display:none;">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M2 12h20"></path>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+        </div>
         <span>Viewlink</span>
       </a>
 
-      <nav class="nav-links">
-        <a href="#" class="active">Home</a>
+      <nav class="nav-center">
+        <a href="#home" class="active">Home</a>
         <a href="#services">Services</a>
+        <a href="#infrastructure">Infrastructure</a>
         <a href="#contact">Contact</a>
       </nav>
 
-      <a href="#contact" class="support-btn">🎧 24/7 Support</a>
-      <button class="menu-toggle" id="menuToggle">Menu</button>
+      <div class="nav-actions">
+        <div class="live-status">
+          <span class="status-dot"></span>
+          <span>Network Active</span>
+        </div>
+        <a href="#contact" class="support-btn">🎧 24/7 Support</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">Menu</button>
+      </div>
     </div>
   </header>
 
-  <section class="hero">
-<div class="container hero-wrap">
-  <div class="hero-text">
-    <span class="eyebrow">Complete Tech Solutions</span>
+  <!-- HERO SECTION -->
+  <section class="hero" id="home">
+    <div class="hero-glow-orb"></div>
+    <div class="container hero-wrap">
+      
+      <!-- Left Content -->
+      <div class="hero-text">
+        <div class="hero-tag">
+          <span></span> Complete Tech &amp; Connectivity Solutions
+        </div>
 
-    <h1>
-      Connect Beyond Limits:<br>
-      Satellite, CCTV, Cable TV & High-Speed Internet
-    </h1>
+        <h1>
+          Connect Beyond Limits:<br>
+          <span class="gradient-text">Satellite, Fiber, CCTV &amp; Solar Power</span>
+        </h1>
 
-    <p>
-      One ecosystem for total connectivity — reliable satellite broadband,
-      smart CCTV surveillance, premium cable TV entertainment, and ultra-fast fiber internet.
-      Serving homes & businesses.
-    </p>
+        <p>
+          One unified ecosystem engineered for total reliability. We deliver ultra-fast fiber internet, 
+          enterprise-grade CCTV surveillance, off-grid satellite connectivity, and sustainable solar energy across Rizal and Greater Manila.
+        </p>
 
-    <div class="stats">
-      <div class="stat">
-        <div class="stat-icon">👥</div>
-        <div>
-          <strong>10K+</strong>
-          <span>Happy Clients</span>
+        <div class="hero-cta-group">
+          <a href="#services" class="btn-primary">
+            <span>Explore Core Services</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="#contact" class="btn-secondary">Request Custom Quote</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <strong>10,000+</strong>
+            <span>Active Deployments</span>
+          </div>
+          <div class="stat-item">
+            <strong>99.98%</strong>
+            <span>SLA Uptime Guarantee</span>
+          </div>
+          <div class="stat-item">
+            <strong>24 / 7 / 365</strong>
+            <span>On-Call Rapid Support</span>
+          </div>
         </div>
       </div>
 
-      <div class="stat">
-        <div class="stat-icon">🛡️</div>
-        <div>
-          <strong>99.9%</strong>
-          <span>Uptime</span>
+      <!-- Right Infrastructure Dashboard -->
+      <div class="infra-widget" id="infrastructure">
+        <div class="widget-header">
+          <div class="widget-title">
+            <span class="status-dot"></span>
+            <span>Viewlink Operational Hub</span>
+          </div>
+          <span class="widget-tag">Live Metrics</span>
+        </div>
+
+        <div class="network-nodes-grid">
+          <div class="node-card">
+            <div class="node-top">
+              <span class="node-label">Fiber Bandwidth</span>
+              <span class="node-sub">⚡ Tier-1</span>
+            </div>
+            <div class="node-value">1,000 Mbps</div>
+          </div>
+
+          <div class="node-card">
+            <div class="node-top">
+              <span class="node-label">Network Ping</span>
+              <span class="node-sub">● Optimal</span>
+            </div>
+            <div class="node-value">2 ms</div>
+          </div>
+
+          <div class="node-card">
+            <div class="node-top">
+              <span class="node-label">Solar Clean Energy</span>
+              <span class="node-sub">✓ Grid-Tied</span>
+            </div>
+            <div class="node-value">98.4% Eff.</div>
+          </div>
+
+          <div class="node-card">
+            <div class="node-top">
+              <span class="node-label">Security Uptime</span>
+              <span class="node-sub">🔒 AI Monitored</span>
+            </div>
+            <div class="node-value">24/7 Cloud</div>
+          </div>
+        </div>
+
+        <div class="speed-meter">
+          <div class="speed-header">
+            <span>Core Network Throughput</span>
+            <span style="color:#60a5fa; font-weight:700;">940 Mbps / 900 Mbps</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill"></div>
+          </div>
+          <div class="meter-footer">
+            <span>Symmetric Low-Latency Backbone</span>
+            <span>Montalban NOC</span>
+          </div>
         </div>
       </div>
 
-      <div class="stat">
-        <div class="stat-icon">🎧</div>
-        <div>
-          <strong>24/7</strong>
-          <span>Tech Support</span>
-        </div>
-      </div>
     </div>
-
-    <a href="#services" class="cta-btn">Explore Services →</a>
-  </div>
-
-  <div class="hero-visual">
-    <img src="globe.png" class="hero-globe">
-  </div>
-</div>
   </section>
 
-  <section class="services" id="services">
+  <!-- ===================================================
+       SERVICES SECTION - BALANCED BY 2s WITH PICTURES/IMAGES
+       =================================================== -->
+  <section class="services-section" id="services">
     <div class="container">
-      <div class="section-title">
+      
+      <div class="section-header">
+        <span class="section-pill">Enterprise &amp; Residential Capabilities</span>
         <h2>Our Core Services</h2>
-        <div class="line"></div>
+        <p>
+          High-performance infrastructure built with precision, enterprise components, and dedicated on-site technical support.
+        </p>
       </div>
 
-      <div class="service-grid">
-        <div class="service-card">
-<div class="service-icon">
-  <img src="internet.jpg" alt="High-Speed Internet">
-</div>
+      <div class="services-grid-2col">
+        
+        <!-- 1. High-Speed Internet -->
+        <article class="service-card">
+          <div class="card-top">
+            <div class="service-image-box">
+              <img src="internet.jpg" alt="High-Speed Internet" class="service-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+              <div class="icon-badge" style="display:none;">
+                <svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><circle cx="12" cy="20" r="1.5" fill="currentColor"></circle></svg>
+              </div>
+            </div>
+            <span class="service-badge">Fiber Broadband</span>
+          </div>
           <h3>High-Speed Internet</h3>
-          <p>
-            Fiber optic speed with unlimited data for seamless streaming,
-            gaming, and work.
+          <p class="service-desc">
+            Fiber optic speed with unlimited data for seamless streaming, gaming, and work.
           </p>
-          <a href="#contact" class="outline-btn">Request Internet</a>
-        </div>
+          <ul class="feature-list">
+            <li class="feature-item"><span class="check-icon">✓</span> Up to 1 Gbps symmetric speed</li>
+            <li class="feature-item"><span class="check-icon">✓</span> Unlimited data with zero throttling</li>
+            <li class="feature-item"><span class="check-icon">✓</span> Free Wi-Fi 6 router installation</li>
+          </ul>
+          <div class="card-footer">
+            <a href="#contact" class="service-btn">
+              <span>Request Internet</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
+        </article>
 
-        <div class="service-card">
-<div class="service-icon">
-  <img src="cctv.jpg" alt="CCTV & Security">
-</div>
-          <h3>CCTV & Security</h3>
-          <p>
-            AI-powered cameras, motion alerts, cloud storage. Protect your
-            property 24/7.
+        <!-- 2. CCTV & Security -->
+        <article class="service-card">
+          <div class="card-top">
+            <div class="service-image-box">
+              <img src="cctv.jpg" alt="CCTV & Security" class="service-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+              <div class="icon-badge" style="display:none;">
+                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><circle cx="12" cy="11" r="3.2"></circle></svg>
+              </div>
+            </div>
+            <span class="service-badge">AI Surveillance</span>
+          </div>
+          <h3>CCTV &amp; Security</h3>
+          <p class="service-desc">
+            AI-powered cameras, motion alerts, cloud storage. Protect your property 24/7.
           </p>
-          <a href="#contact" class="outline-btn">Request CCTV</a>
-        </div>
+          <ul class="feature-list">
+            <li class="feature-item"><span class="check-icon">✓</span> 4K Ultra-HD with full-color night vision</li>
+            <li class="feature-item"><span class="check-icon">✓</span> AI human &amp; vehicle motion filtering</li>
+            <li class="feature-item"><span class="check-icon">✓</span> 24/7 cloud recording &amp; phone app sync</li>
+          </ul>
+          <div class="card-footer">
+            <a href="#contact" class="service-btn">
+              <span>Request CCTV</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
+        </article>
 
-        <div class="service-card">
-<div class="service-icon">
-  <img src="solar.jpg" alt="Solar Panel Installation">
-</div>
+        <!-- 3. Solar Panel Installation -->
+        <article class="service-card">
+          <div class="card-top">
+            <div class="service-image-box">
+              <img src="solar.jpg" alt="Solar Panel Installation" class="service-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+              <div class="icon-badge" style="display:none;">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+              </div>
+            </div>
+            <span class="service-badge">Clean Energy</span>
+          </div>
           <h3>Solar Panel Installation</h3>
-          <p>
-            Reduce electricity costs and switch to clean, sustainable solar
-            energy.
+          <p class="service-desc">
+            Reduce electricity costs and switch to clean, sustainable solar energy.
           </p>
-          <a href="#contact" class="outline-btn">Request Solar</a>
-        </div>
+          <ul class="feature-list">
+            <li class="feature-item"><span class="check-icon">✓</span> Slash monthly Meralco bills by up to 70%</li>
+            <li class="feature-item"><span class="check-icon">✓</span> Tier-1 high-efficiency monocrystalline panels</li>
+            <li class="feature-item"><span class="check-icon">✓</span> On-Grid, Hybrid &amp; Net Metering ready</li>
+          </ul>
+          <div class="card-footer">
+            <a href="#contact" class="service-btn">
+              <span>Request Solar</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
+        </article>
 
-        <div class="service-card">
-<div class="service-icon">
-  <img src="network.jpg" alt="Network Installation">
-</div>
+        <!-- 4. Network Installation -->
+        <article class="service-card">
+          <div class="card-top">
+            <div class="service-image-box">
+              <img src="network.jpg" alt="Network Installation" class="service-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+              <div class="icon-badge" style="display:none;">
+                <svg viewBox="0 0 24 24"><rect width="18" height="12" x="3" y="4" rx="2"></rect><line x1="2" x2="22" y1="20" y2="20"></line><line x1="12" x2="12" y1="16" y2="20"></line><line x1="8" x2="8" y1="10"></line><line x1="12" x2="12" y1="10"></line><line x1="16" x2="16" y1="10"></line></svg>
+              </div>
+            </div>
+            <span class="service-badge">Enterprise Infra</span>
+          </div>
           <h3>Network Installation</h3>
-          <p>
+          <p class="service-desc">
             Complete network setup for fast, secure, and stable connectivity.
           </p>
-          <a href="#contact" class="outline-btn">Request Network</a>
-        </div>
+          <ul class="feature-list">
+            <li class="feature-item"><span class="check-icon">✓</span> Structured Cat6/Cat7 cabling &amp; patch panels</li>
+            <li class="feature-item"><span class="check-icon">✓</span> Whole-home &amp; office seamless mesh Wi-Fi</li>
+            <li class="feature-item"><span class="check-icon">✓</span> Enterprise switches, VLAN &amp; firewall security</li>
+          </ul>
+          <div class="card-footer">
+            <a href="#contact" class="service-btn">
+              <span>Request Network</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
+        </article>
 
-        <div class="service-card">
-<div class="service-icon">
-  <img src="satellite.jpg" alt="Satellite Internet">
-</div>
+        <!-- 5. Satellite Internet -->
+        <article class="service-card">
+          <div class="card-top">
+            <div class="service-image-box">
+              <img src="satellite.jpg" alt="Satellite Internet" class="service-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+              <div class="icon-badge" style="display:none;">
+                <svg viewBox="0 0 24 24"><path d="M4 10a7.31 7.31 0 0 0 10 10"></path><path d="M4 6a11.37 11.37 0 0 1 14 14"></path><circle cx="4" cy="20" r="1.5" fill="currentColor"></circle><path d="M9 3h6l4 4-6 6-4-4 6-6Z"></path></svg>
+              </div>
+            </div>
+            <span class="service-badge">Remote Sat-Com</span>
+          </div>
           <h3>Satellite Internet</h3>
-          <p>
-            Global coverage, low-latency internet for remote and rural
-            locations.
+          <p class="service-desc">
+            Global coverage, low-latency internet for remote and rural locations.
           </p>
-          <a href="#contact" class="outline-btn">Request Satellite</a>
-        </div>
+          <ul class="feature-list">
+            <li class="feature-item"><span class="check-icon">✓</span> 100% off-grid coverage anywhere in the PH</li>
+            <li class="feature-item"><span class="check-icon">✓</span> Heavy-duty weather-shielded dish installation</li>
+            <li class="feature-item"><span class="check-icon">✓</span> Reliable backup link during typhoon season</li>
+          </ul>
+          <div class="card-footer">
+            <a href="#contact" class="service-btn">
+              <span>Request Satellite</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
+        </article>
 
-        <div class="service-card">
-<div class="service-icon">
-  <img src="tv.jpg" alt="Cable TV">
-</div>
+        <!-- 6. Cable TV -->
+        <article class="service-card">
+          <div class="card-top">
+            <div class="service-image-box">
+              <img src="tv.jpg" alt="Cable TV" class="service-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+              <div class="icon-badge" style="display:none;">
+                <svg viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="7" rx="2"></rect><path d="m17 2-5 5-5-5"></path></svg>
+              </div>
+            </div>
+            <span class="service-badge">Digital HD</span>
+          </div>
           <h3>Cable TV</h3>
-          <p>
+          <p class="service-desc">
             Hundreds of HD channels, premium sports, movies, and kids content.
           </p>
-          <a href="#contact" class="outline-btn">Request Cable TV</a>
-        </div>
-        <div class="service-card">
-<div class="service-icon">
-  <img src="aircon.jpg" alt="Aircon Cleaning & Repair">
-</div>
-  <h3>Aircon Cleaning & Repair</h3>
-  <p>
-    Professional aircon cleaning, maintenance, troubleshooting, and repair
-    services for homes and businesses.
-  </p>
-  <a href="#contact" class="outline-btn">Request Aircon Repair</a>
-</div>
+          <ul class="feature-list">
+            <li class="feature-item"><span class="check-icon">✓</span> 120+ digital HD &amp; 4K entertainment channels</li>
+            <li class="feature-item"><span class="check-icon">✓</span> Live global sports, cinema &amp; documentary</li>
+            <li class="feature-item"><span class="check-icon">✓</span> Zero-buffer digital set-top box included</li>
+          </ul>
+          <div class="card-footer">
+            <a href="#contact" class="service-btn">
+              <span>Request Cable TV</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 7. Aircon Cleaning & Repair -->
+        <article class="service-card">
+          <div class="card-top">
+            <div class="service-image-box">
+              <img src="aircon.jpg" alt="Aircon Cleaning & Repair" class="service-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+              <div class="icon-badge" style="display:none;">
+                <svg viewBox="0 0 24 24"><rect width="20" height="10" x="2" y="4" rx="2"></rect><line x1="6" x2="6" y1="8" y2="10"></line><line x1="18" x2="18" y1="8" y2="10"></line><path d="M7 17c1.5 1.5 3 1.5 4.5 0s3-1.5 4.5 0"></path><path d="M8 21c1.2 1.2 2.4 1.2 3.6 0s2.4-1.2 3.6 0"></path></svg>
+              </div>
+            </div>
+            <span class="service-badge">HVAC Care</span>
+          </div>
+          <h3>Aircon Cleaning &amp; Repair</h3>
+          <p class="service-desc">
+            Professional cleaning, maintenance, and repair to keep your cooling systems efficient.
+          </p>
+          <ul class="feature-list">
+            <li class="feature-item"><span class="check-icon">✓</span> Complete antibacterial chemical wash</li>
+            <li class="feature-item"><span class="check-icon">✓</span> Freon recharge &amp; leak troubleshooting</li>
+            <li class="feature-item"><span class="check-icon">✓</span> Restores cooling efficiency &amp; lowers bills</li>
+          </ul>
+          <div class="card-footer">
+            <a href="#contact" class="service-btn">
+              <span>Request Aircon Service</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 8. 24/7 Technical Support -->
+        <article class="service-card">
+          <div class="card-top">
+            <div class="service-image-box">
+              <img src="support.jpg" alt="24/7 Technical Support" class="service-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+              <div class="icon-badge" style="display:none;">
+                <svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
+              </div>
+            </div>
+            <span class="service-badge">Rapid Dispatch</span>
+          </div>
+          <h3>24/7 Technical Support</h3>
+          <p class="service-desc">
+            On-site troubleshooting, device configuration, and round-the-clock technical assistance.
+          </p>
+          <ul class="feature-list">
+            <li class="feature-item"><span class="check-icon">✓</span> Rapid emergency on-site field dispatch</li>
+            <li class="feature-item"><span class="check-icon">✓</span> Direct phone &amp; online diagnostics hotline</li>
+            <li class="feature-item"><span class="check-icon">✓</span> Preventive maintenance &amp; equipment warranty</li>
+          </ul>
+          <div class="card-footer">
+            <a href="#contact" class="service-btn">
+              <span>Request Tech Support</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
 
+  <!-- ===================================================
+       CONTACT & QUOTE SECTION
+       =================================================== -->
   <section class="contact-section" id="contact">
     <div class="container">
-      <div class="contact-box">
+      <div class="contact-wrapper">
+        
         <div class="contact-info">
-          <h3>Request a Quote or Support</h3>
+          <h3>Request a Consultation or Quote</h3>
           <p>
-            Talk to our experts to customize a solution for your home or
-            business. Fast response within 24 hours.
+            Connect with our system engineers today. We inspect your home or facility to design an optimized, reliable, and cost-effective tech setup.
           </p>
 
           <div class="info-list">
-            <div class="info-item">
-              <div class="info-icon">📞</div>
-              <div>+63 999 423 1344</div>
+            <div class="info-card">
+              <div class="info-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+              <div>
+                <div class="info-card-label">Direct Hotline</div>
+                <div class="info-card-val">+63 999 423 1344</div>
+              </div>
             </div>
 
-            <div class="info-item">
-              <div class="info-icon">✉️</div>
-              <div>viewlink27@gmail.com</div>
+            <div class="info-card">
+              <div class="info-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div>
+                <div class="info-card-label">Official Inquiries</div>
+                <div class="info-card-val">viewlink27@gmail.com</div>
+              </div>
             </div>
 
-            <div class="info-item">
-              <div class="info-icon">📍</div>
-              <div>Montalban, Rizal Philippines</div>
+            <div class="info-card">
+              <div class="info-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+              <div>
+                <div class="info-card-label">Operations Center</div>
+                <div class="info-card-val">Montalban, Rizal, Philippines</div>
+              </div>
             </div>
           </div>
         </div>
 
-        <form class="contact-form" onsubmit="submitForm(event)">
+        <form class="contact-form" onsubmit="handleForm(event)">
           <div class="form-row">
-            <input type="text" placeholder="Full name" required />
-            <input type="email" placeholder="Email address" required />
+            <div class="form-group">
+              <label>Your Full Name</label>
+              <input type="text" placeholder="e.g. Juan dela Cruz" required />
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="name@domain.com" required />
+            </div>
           </div>
 
-<select required>
-  <option value="">I'm interested in...</option>
-  <option>High-Speed Internet</option>
-  <option>CCTV & Security</option>
-  <option>Solar Panel Installation</option>
-  <option>Network Installation</option>
-  <option>Satellite Internet</option>
-  <option>Cable TV</option>
-  <option>Aircon Cleaning & Repair</option>
-  <option>Technical Support</option>
-</select>
+          <div class="form-group">
+            <label>Selected Service</label>
+            <select required>
+              <option value="">Select a service...</option>
+              <option>High-Speed Internet (Fiber)</option>
+              <option>CCTV &amp; Smart Security</option>
+              <option>Solar Panel Installation</option>
+              <option>Enterprise Network Cabling</option>
+              <option>Satellite Internet (Off-Grid)</option>
+              <option>Digital Cable TV</option>
+              <option>Aircon Cleaning &amp; Repair</option>
+              <option>24/7 Technical Support</option>
+            </select>
+          </div>
 
-          <textarea placeholder="Tell us about your requirements or location..." required></textarea>
+          <div class="form-group">
+            <label>Message &amp; Project Details</label>
+            <textarea placeholder="Tell us about your property location, bandwidth requirements, or timeline..." required></textarea>
+          </div>
 
-          <button type="submit" class="submit-btn">Send Request →</button>
+          <button type="submit" class="submit-btn">
+            <span>Send Request</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+          </button>
         </form>
+
       </div>
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer class="footer">
-    <div class="container footer-wrap">
-      <div class="footer-brand">
-        <img src="logo.png" style="width:34px; height:34px;">
-        <span style="font-size: 18px;">Viewlink</span>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="logo.png" alt="Viewlink Logo" class="brand-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+          <div class="brand-icon" style="width:32px;height:32px;display:none;">
+            <svg viewBox="0 0 24 24" style="width:18px;height:18px;">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M2 12h20"></path>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+          </div>
+          <span>Viewlink</span>
+        </div>
+
+        <nav class="footer-links">
+          <a href="#home">Home</a>
+          <a href="#services">Services</a>
+          <a href="#infrastructure">Infrastructure</a>
+          <a href="#contact">Support</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </nav>
       </div>
 
-      <div class="footer-nav">
-        <a href="#">About Us</a>
-        <a href="#">Coverage Map</a>
-        <a href="#">Support</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms</a>
+      <div class="footer-bottom">
+        <div>&copy; 2025 Viewlink Complete Tech Solutions. All rights reserved.</div>
+        <div style="color: #64748b;">Serving Montalban, Rodriguez, San Mateo, &amp; Rizal Province.</div>
       </div>
-
-      <div class="copyright">© 2025 Viewlink. All rights reserved.</div>
     </div>
   </footer>
 
   <script>
-    function submitForm(e) {
+    function handleForm(e) {
       e.preventDefault();
-      alert("Your request has been sent successfully.");
+      alert("Thank you! Your service inquiry has been received. A Viewlink specialist will reach out within 24 hours.");
     }
 
+    // Responsive Mobile Menu Toggle
     const menuToggle = document.getElementById("menuToggle");
-    const navLinks = document.querySelector(".nav-links");
+    const navCenter = document.querySelector(".nav-center");
 
     menuToggle.addEventListener("click", () => {
-      if (window.innerWidth <= 980) {
-        const isOpen = navLinks.style.display === "flex";
-        navLinks.style.display = isOpen ? "none" : "flex";
-        navLinks.style.position = "absolute";
-        navLinks.style.top = "76px";
-        navLinks.style.left = "16px";
-        navLinks.style.right = "16px";
-        navLinks.style.flexDirection = "column";
-        navLinks.style.padding = "18px";
-        navLinks.style.background = "#fff";
-        navLinks.style.border = "1px solid #e7eefb";
-        navLinks.style.borderRadius = "18px";
-        navLinks.style.boxShadow = "0 20px 40px rgba(10, 31, 87, 0.08)";
-        navLinks.style.zIndex = "999";
+      if (window.innerWidth <= 768) {
+        const isVisible = navCenter.style.display === "flex";
+        navCenter.style.display = isVisible ? "none" : "flex";
+        navCenter.style.position = "absolute";
+        navCenter.style.top = "80px";
+        navCenter.style.left = "16px";
+        navCenter.style.right = "16px";
+        navCenter.style.flexDirection = "column";
+        navCenter.style.gap = "14px";
+        navCenter.style.padding = "20px";
+        navCenter.style.background = "#ffffff";
+        navCenter.style.border = "1px solid #e2e8f0";
+        navCenter.style.borderRadius = "16px";
+        navCenter.style.boxShadow = "0 20px 35px -8px rgba(15, 23, 42, 0.15)";
       }
     });
 
     window.addEventListener("resize", () => {
-      if (window.innerWidth > 980) {
-        navLinks.removeAttribute("style");
+      if (window.innerWidth > 768) {
+        navCenter.removeAttribute("style");
       }
     });
   </script>
